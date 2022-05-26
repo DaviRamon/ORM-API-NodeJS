@@ -1,0 +1,9 @@
+const path = require('path');
+
+// resolve pára o sequelize as novas rotas de organização local de arquivos. 
+module.exports = {
+  'config': path.resolve('./api/config', 'config.json'), 
+  'models-path': path.resolve('./api/models'),
+  'seeders-path': path.resolve('./api/seeders'),
+  'migrations-path': path.resolve('./api/migrations')
+}
