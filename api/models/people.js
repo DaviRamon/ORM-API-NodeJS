@@ -2,6 +2,27 @@
 const {Model} = require('sequelize');
 
 
+/**
+ 'use strict';
+
+module.exports = (sequelize, DataTypes) => {
+
+  const People = sequelize.define('People', {
+    name: DataTypes.STRING,
+    active: DataTypes.BOOLEAN,
+    email: DataTypes.STRING,
+    role: DataTypes.STRING
+
+  }, {});
+
+  People.associate(models) {
+      // define association here
+    }
+ 
+  return People;
+};
+ */
+
 
 module.exports = (sequelize, DataTypes) => {
   class People extends Model {
