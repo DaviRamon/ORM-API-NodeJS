@@ -7,5 +7,6 @@ router.get('/people', PeopleController.getAllPeople);
 router.get('/people/:id', PeopleController.getPersonByID);
 router.post('/people', PeopleController.createPerson);
 router.put('/people/:id', PeopleController.updatePerson);
+router.delete('/people/:id', PeopleController.deletePerson);
 
 module.exports = router;

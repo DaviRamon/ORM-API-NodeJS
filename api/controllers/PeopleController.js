@@ -32,7 +32,7 @@ class PeopleController {
 
      static async createPerson(req, res) {
 
-          const newPerson = req.body // armazena os dadoso do corpo da requisição
+          const newPerson = req.body; // armazena os dadoso do corpo da requisição
 
           try {
                const createdNewPerson = await database.People.create(newPerson);
@@ -47,9 +47,8 @@ class PeopleController {
 
      static async updatePerson(req, res) {
 
-
           const { id } = req.params; // vou  passa por aqui o que deseja-se atualizar. Neste caso o ID>.
-          const newInfos = req.body
+          const newInfos = req.body;
 
           try {
                await database.People.update(newInfos, { where: { id: Number(id) } }) //.update(newInfos, { where: { id: Number(id)  }})
@@ -59,7 +58,23 @@ class PeopleController {
 
           } catch (error) {
                console.log(error)
-               return res.status(500).json(error);
+               return res.status(500).json(error.message);
+          }
+     }
+
+
+     static async deletePerson(req, res) {
+          
+          const { id } = req.params;
+          
+          try {
+               await database.People.destroy(  { where: { id: Number(id)  }})
+               const deletePerson = await database.People.findOne({ where: { id: Number(id)}})
+               const oi = "person deleted successfully";
+               return res.status(200).json({message: "Person deleted successfully"});
+               
+          } catch (error) {
+               return res.status(500).json(error.message);
           }
 
      }
