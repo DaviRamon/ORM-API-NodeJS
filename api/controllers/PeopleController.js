@@ -42,11 +42,27 @@ class PeopleController {
                
                return res.status(500).json(error.message);
           }
-
-
      }
 
 
+     static async updatePerson(req, res) {
+
+          
+          const { id } = req.params; // vou  passa por aqui o que deseja-se atualizar. Neste caso o ID>.
+          const newInfos = req.body
+
+          try {
+               await database.People.update(newInfos, { where: {id: Number(id)}}) //.update(newInfos, { where: { id: Number(id)  }})
+               const updatedPerson = await database.People.findOne( { where: { id: Number(id) }})
+               return res.status(200).json(updatedPerson);
+
+
+          } catch (error) {
+               console.log(error)
+               return res.status(500).json(error);
+          }
+
+     }
 
 
 
