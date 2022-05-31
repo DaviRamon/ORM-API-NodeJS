@@ -32,17 +32,30 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
-    }
+
+      People.hasMany(models.ClassRoom, {
+        foreignKey: 'teacherID'
+      });
+
+
+      People.hasMany(models.Registration, {
+        foreignKey: 'studentID'
+      });
+
+    };
   }
   People.init({
+
     name: DataTypes.STRING,
     active: DataTypes.BOOLEAN,
     email: DataTypes.STRING,
     role: DataTypes.STRING
+
   }, {
+
     sequelize,
     modelName: 'People',
+
   });
   return People;
 };
