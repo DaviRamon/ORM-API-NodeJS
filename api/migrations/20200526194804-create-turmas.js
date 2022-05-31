@@ -1,25 +1,25 @@
 'use strict';
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('ClassRooms', {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('Turmas', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      start_date: {
+      docente_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: 'Pessoas', key: 'id'}
+      },
+      data_inicio: {
         type: Sequelize.DATEONLY
       },
-      teacherID: {
+      nivel_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {model: 'People', key: 'id'}
-      },
-      levelID: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {model: 'Levels', key: 'id'}
+        references: { model: 'Niveis', key: 'id'}
       },
       createdAt: {
         allowNull: false,
@@ -31,7 +31,7 @@ module.exports = {
       }
     });
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('ClassRooms');
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('Turmas');
   }
 };

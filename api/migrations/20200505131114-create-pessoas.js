@@ -1,18 +1,17 @@
 'use strict';
 module.exports = {
-
-  async up(queryInterface, Sequelize) { 
-    await queryInterface.createTable('People', { // up cria a migração
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('Pessoas', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER  // constraint -> restrições
+        type: Sequelize.INTEGER
       },
-      name: {
+      nome: {
         type: Sequelize.STRING
       },
-      active: {
+      ativo: {
         type: Sequelize.BOOLEAN
       },
       email: {
@@ -31,8 +30,7 @@ module.exports = {
       }
     });
   },
-  
-  async down(queryInterface, Sequelize) { 
-    await queryInterface.dropTable('People'); // down desfaz a migração
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('Pessoas');
   }
 };
