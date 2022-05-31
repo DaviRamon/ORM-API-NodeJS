@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
      
-      Levels.hasMany(models.ClassRoom, {
+      Levels.hasMany(models.ClassRooms, {
         foreignKey: 'levelID'
       });
 

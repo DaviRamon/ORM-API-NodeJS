@@ -33,12 +33,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
 
-      People.hasMany(models.ClassRoom, {
+      People.hasMany(models.ClassRooms, {
         foreignKey: 'teacherID'
       });
 
 
-      People.hasMany(models.Registration, {
+      People.hasMany(models.Registrations, {
         foreignKey: 'studentID'
       });
 
